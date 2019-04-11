@@ -18,17 +18,17 @@ def GetGeneratorList():
     for gen in genList:
         print(gen)
     print("+=-----------=+\n")
+    return genList
 
-
-def OnRoll():
-    genFile = "./Generators/" + "Book Titles" + ".py"
-    numRolls = 5
+def OnRoll(userRequest,numRequested):
+    genFile = "./Generators/" + userRequest.strip() + ".py"
+    numRolls = int(numRequested)
 
     x = imp.load_source("generator", genFile)
     z = x.generator()
 
     results = []
-    for j in range(numRolls):
+    for _ in range(numRolls):
         results.append(z.start())
     results.sort()
 
@@ -39,5 +39,7 @@ def OnRoll():
 
 
 if __name__ == "__main__":
-    GetGeneratorList()
-    OnRoll()
+    tableList=GetGeneratorList()
+    userRequest = input("Which table to roll?: ")
+    numRequested = input("And how many do you want?: ")
+    OnRoll(userRequest,numRequested)

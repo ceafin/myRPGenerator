@@ -12,18 +12,18 @@ class generator:
 
     def start(self):
         result = ""
+        npcName = self.npcName()
         sex = "she" if randint(1, 2) == 1 else "he"
 
-        result += self.npcName() + " stands before you. "
-        result += sex.capitalize() + " "
-        result += self.appearance() + ".\n"
-        result += sex.capitalize() + " " + self.abilities() + "\n"
-        result += "Talents: " + self.talents() + "\n"
-        result += "Mannerisms: " + self.mannerisms() + "\n"
-        result += "Interaction Traits: " + self.interactionTraits() + "\n"
-        result += "Ideals: " + self.ideals() + "\n"
-        result += "Bonds: " + self.bonds() + "\n"
-        result += "Flaws and Secrets: " + self.flawsSecrets() + "\n"
+        result += npcName + " stands before you. \n"
+        result += sex.capitalize() + " " + self.appearance() + ". \n"
+        result += npcName + " " + self.abilities() + ". \n"
+        result += sex.capitalize() + " " + self.talents() + ". \n"
+        result += npcName + " " + self.mannerisms() + ". \n"
+        result += "When interacting with others " + sex + " " + self.interactionTraits() + ". \n"
+        result += "Ideals: " + self.ideals() + ". \n"
+        result += "Bonds: " + self.bonds() + ". \n"
+        result += "Flaws and Secrets: " + self.flawsSecrets() + ". \n\n"
 
         return result
 
@@ -75,25 +75,87 @@ class generator:
         ]
 
         if fork == 1:
-            result += "seems " + choice(highAbil) + "."
+            result += "seems " + choice(highAbil)
         elif fork == 2:
-            result += "seems " + choice(lowAbil) + "."
+            result += "seems " + choice(lowAbil)
         elif fork == 3:
-            result += "seems " + choice(highAbil) + ", while also being " + choice(lowAbil) + "."
+            result += "seems " + choice(highAbil) + ", while also being " + choice(lowAbil)
 
         return result
 
     def talents(self):
-        elements = ["", "", ""]
+        elements = [
+            "can play a musical instrument",
+            "can speak several languages fluently",
+            "is unbelievably lucky",
+            "has perfect memory",
+            "is great with animals",
+            "is great with children",
+            "is great at solving puzzles",
+            "is great a [some game]",
+            "is great at impersonations",
+            "draws beautifully",
+            "paints beautifully",
+            "sings beautifully",
+            "can drink everyone under the table",
+            "is an expert carpenter",
+            "is an expert cook",
+            "is an expert dart thrower and rock skipper",
+            "is an expert juggler",
+            "is a skilled actor and master of disguise",
+            "is a skilled dancer",
+            "knows Thieves' Cant",
+        ]
         return choice(elements)
 
     def mannerisms(self):
-        elements = ["", "", ""]
+        elements = [
+            "is prone to singing, whistling, or humming quietly",
+            "speaks in rhyme of some other peculiar way",
+            "has a particularly high/low voice",
+            "slurs their words, lisps, or stutters",
+            "enunciates overly clearly",
+            "speaks louder than necessary for the situation",
+            "whispers regardless of the situation",
+            "uses flowery speech and long words",
+            "frequently uses the wrong word or colloquialism",
+            "uses colorful oaths and exclamations",
+            "makes constant jokes or puns when possible",
+            "is prone to (unbased) predictions of doom",
+            "fidgets",
+            "squints more than necessary",
+            "often stares into the distance",
+            "always seems to be chewing on something",
+            "often paces",
+            "unconsciously taps fingers",
+            "unconsciously bites their fingernails",
+            "often is tugging their beard or twirling their hair",
+        ]
         return choice(elements)
 
     def interactionTraits(self):
-        elements = ["", "", ""]
-        return choice(elements)
+        elements = [
+            "stubbornly argumentative",
+            "awfully arrogant",
+            "blustering",
+            "quite rude",
+            "very curious",
+            "open and friendly",
+            "honest",
+            "easily hot-tempered",
+            "easily irritable",
+            "ponderous",
+            "very quiet",
+            "noticably suspicious"
+            ]
+        if randint(1,6) == 6:
+            fst = choice(elements)
+            scnd = choice(elements)
+            while fst == scnd:
+                scnd = choice(elements)
+            return "is " + fst + " while also " + scnd
+        else:
+            return "is " + choice(elements)
 
     def ideals(self):
         elements = ["", "", ""]

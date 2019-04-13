@@ -24,7 +24,13 @@ class generator:
         result += "When interacting with others " + sex + " " + self.interactionTraits() + ". \n"
         result += npcName + " " + self.ideals() + ". \n"
         result += sex.capitalize() + " " + self.bonds() + ". \n"
-        result += "Flaws and Secrets: " + self.flawsSecrets() + ". \n\n"
+        result += (
+            "Something that could potentially undermine"
+            + npcName
+            + " "
+            + self.flawsSecrets()
+            + ". \n\n"
+        )
 
         return result
 
@@ -217,7 +223,20 @@ class generator:
             return choice(elements)
 
     def flawsSecrets(self):
-        elements = ["", "", ""]
+        elements = [
+            "is their forbidden love or suseptibility to romance",
+            "is that they enjoy decadent pleasures",
+            "is their arrogance",
+            "is that they envy another person's possessions or station",
+            "is overpowering greed",
+            "is prone to rage",
+            "is that they have a powerful enemy",
+            "is the specific phobia of _____",
+            "is their shameful or scanalous history",
+            "is a secret crime or misdeed",
+            "is possession of forbidden lore",
+            "is fool-hardy bravery",
+        ]
         return choice(elements)
 
     def npcName(self):

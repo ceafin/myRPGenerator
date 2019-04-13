@@ -2,7 +2,7 @@ from random import choice
 from random import randint
 
 
-class generator: 
+class generator:
     def version(self):
         return 1.0
 
@@ -10,44 +10,41 @@ class generator:
         result = ""
         sex = "she" if randint(1, 2) == 1 else "he"
 
-        result = "[Name] stands before you.\n"
-        result + sex.capitalize() + " has "
-        if self.appearance()[0].lower() == ("a" or "i" or "o" or "u" or "e" or "y"):
-            result = "an " + self.appearance() + "\n"
-        else:
-            result = "a " + self.appearance() + "\n"
-        result = result + "Abilities: " + self.abilities() + "\n"
-        result = result + "Talents: " + self.talents() + "\n"
-        result = result + "Mannerisms: " + self.mannerisms() + "\n"
-        result = result + "Interaction Traits: " + self.interactionTraits() + "\n"
-        result = result + "Ideals: " + self.ideals() + "\n"
-        result = result + "Bonds: " + self.bonds() + "\n"
-        result = result + "Flaws and Secrets: " + self.flawsSecrets() + "\n"
+        result += "[Name] stands before you. "
+        result += sex.capitalize() + " "
+        result += self.appearance() + ".\n"
+        result += "Abilities: " + self.abilities() + "\n"
+        result += "Talents: " + self.talents() + "\n"
+        result += "Mannerisms: " + self.mannerisms() + "\n"
+        result += "Interaction Traits: " + self.interactionTraits() + "\n"
+        result += "Ideals: " + self.ideals() + "\n"
+        result += "Bonds: " + self.bonds() + "\n"
+        result += "Flaws and Secrets: " + self.flawsSecrets() + "\n"
 
         return result
 
     def appearance(self):
         elements = [
-            "distinctive jewelery: earrings, necklace, circlet, bracelets",
-            "piercings",
-            "flamboyant or outlandish clothes",
-            "formal, clean clothes",
-            "ragged, dirty clothes",
-            "pronounced scar",
-            "missing teeth",
-            "missing finger(s)",
-            "unusual eye color, or unmatched colors",
-            "tattoos",
-            "birthmark",
-            "unusual skin color",
-            "bald",
-            "braided beard or hair",
-            "unusual hair color",
-            "nervous eye twitch",
-            "distinctive nose",
-            "distinctive posture (crooked or rigid)",
-            "execptionally beautiful",
-            "execptionally ugly",
+            "is wearing distinctive jewelery: earrings, necklace, circlet, bracelets",
+            "has many piercings",
+            "has flamboyant or outlandish clothes",
+            "is wearing formal, clean clothes",
+            "is wearing ragged, dirty clothes",
+            "has a pronounced scar",
+            "is missing teeth",
+            "is missing finger(s)",
+            "has an unusual eye color, or unmatched colors",
+            "has several visible tattoos",
+            "has a noticable birthmark",
+            "has unusual skin color",
+            "is bald",
+            "has a braided beard or braided hair",
+            "has unusual hair color",
+            "has a nervous eye twitch",
+            "has a distinctive nose",
+            "has distinctive posture (crooked or rigid)",
+            "is execptionally beautiful",
+            "is execptionally ugly",
         ]
         return choice(elements)
 
@@ -78,6 +75,7 @@ class generator:
     def flawsSecrets(self):
         elements = ["", "", ""]
         return choice(elements)
+
 
 # x = generator()
 # print x.start()

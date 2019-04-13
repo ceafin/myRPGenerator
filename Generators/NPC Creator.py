@@ -1,3 +1,7 @@
+import os
+import glob
+import imp
+
 from random import choice
 from random import randint
 
@@ -10,10 +14,10 @@ class generator:
         result = ""
         sex = "she" if randint(1, 2) == 1 else "he"
 
-        result += "[Name] stands before you. "
+        result += self.npcName() + " stands before you. "
         result += sex.capitalize() + " "
         result += self.appearance() + ".\n"
-        result += "Abilities: " + self.abilities() + "\n"
+        result += sex.capitalize() + " " + self.abilities() + "\n"
         result += "Talents: " + self.talents() + "\n"
         result += "Mannerisms: " + self.mannerisms() + "\n"
         result += "Interaction Traits: " + self.interactionTraits() + "\n"
@@ -49,8 +53,35 @@ class generator:
         return choice(elements)
 
     def abilities(self):
-        elements = ["", "", ""]
-        return choice(elements)
+
+        fork = randint(1, 3)
+        result = ""
+
+        highAbil = [
+            "powerful, brawny, strong as an ox (high STR)",
+            "lithe, agile, graceful (high DEX)",
+            "hardy, hale, healthy (high CON)",
+            "studious, learned, inquisitive (high INT)",
+            "perceptive, spiritual, insightful (high WIS)",
+            "persuasive, forceful, born leader (high CHA)",
+        ]
+        lowAbil = [
+            "feeble, scrawny (low STR)",
+            "crumsy, fumbling (low DEX)",
+            "sickly, pale (low CON)",
+            "dim-witted, slow (low INT)",
+            "oblivious, absentminded (low WIS)",
+            "dull, boring (low CHA)",
+        ]
+
+        if fork == 1:
+            result += "seems " + choice(highAbil) + "."
+        elif fork == 2:
+            result += "seems " + choice(lowAbil) + "."
+        elif fork == 3:
+            result += "seems " + choice(highAbil) + ", while also being " + choice(lowAbil) + "."
+
+        return result
 
     def talents(self):
         elements = ["", "", ""]
@@ -75,6 +106,14 @@ class generator:
     def flawsSecrets(self):
         elements = ["", "", ""]
         return choice(elements)
+
+    def npcName(self):
+        genFile = "./Generators/Names - Celtic.py"
+
+        ex = imp.load_source("generator", genFile)
+        zed = ex.generator()
+
+        return zed.start()
 
 
 # x = generator()

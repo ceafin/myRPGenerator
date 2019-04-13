@@ -11,6 +11,7 @@ class generator:
         return 1.0
 
     def start(self):
+
         result = ""
         npcName = self.npcName()
         sex = "she" if randint(1, 2) == 1 else "he"
@@ -21,7 +22,7 @@ class generator:
         result += sex.capitalize() + " " + self.talents() + ". \n"
         result += npcName + " " + self.mannerisms() + ". \n"
         result += "When interacting with others " + sex + " " + self.interactionTraits() + ". \n"
-        result += "Ideals: " + self.ideals() + ". \n"
+        result += npcName + " " + self.ideals() + ". \n"
         result += "Bonds: " + self.bonds() + ". \n"
         result += "Flaws and Secrets: " + self.flawsSecrets() + ". \n\n"
 
@@ -158,8 +159,34 @@ class generator:
             return "is " + choice(elements)
 
     def ideals(self):
-        elements = ["", "", ""]
-        return choice(elements)
+        alignment = randint(1,6)
+
+        alignEnum = {
+            1: "good",
+            2: "lawful",
+            3: "evil",
+            4: "chaotic",
+            5: "neutral",
+            6: "neuter",
+        }
+        ideals = {
+            1: [ "beauty", "charity", "the greater good", "life", "respect", "self-sacrifice" ],
+            2: [ "community", "fairness", "honor", "logic", "responsibility", "tradition" ],
+            3: [ "dominion", "greed", "might", "pain", "retribution", "slaughter" ],
+            4: [ "change", "creativity", "freedom", "indepenence", "no limits", "whimsy" ],
+            5: [ "balance", "knowledge", "live and let live", "moderation", "neutrality", "people" ],
+            6: [ "aspiration", "discovery", "glory", "nation", "redemption", "self-knowledge" ],
+            }
+        
+        if randint(1,6) == 6:
+            fst = choice(ideals[alignment])
+            scnd = choice(ideals[alignment])
+            while fst == scnd:
+                scnd = choice(ideals[alignment])
+            return "holds to the " + alignEnum[alignment] + " ideals of " + fst + " and " + scnd + " in high regard"
+        else:
+            return "holds the " + alignEnum[alignment] + " ideal of " + choice(ideals[alignment]) + " in high regard"
+
 
     def bonds(self):
         elements = ["", "", ""]

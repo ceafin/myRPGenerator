@@ -147,9 +147,9 @@ class generator:
             "easily irritable",
             "ponderous",
             "very quiet",
-            "noticably suspicious"
-            ]
-        if randint(1,6) == 6:
+            "noticably suspicious",
+        ]
+        if randint(1, 6) == 6:
             fst = choice(elements)
             scnd = choice(elements)
             while fst == scnd:
@@ -159,34 +159,40 @@ class generator:
             return "is " + choice(elements)
 
     def ideals(self):
-        alignment = randint(1,6)
+        alignment = randint(1, 6)
 
-        alignEnum = {
-            1: "good",
-            2: "lawful",
-            3: "evil",
-            4: "chaotic",
-            5: "neutral",
-            6: "neuter",
-        }
+        alignEnum = {1: "good", 2: "lawful", 3: "evil", 4: "chaotic", 5: "neutral", 6: "neuter"}
         ideals = {
-            1: [ "beauty", "charity", "the greater good", "life", "respect", "self-sacrifice" ],
-            2: [ "community", "fairness", "honor", "logic", "responsibility", "tradition" ],
-            3: [ "dominion", "greed", "might", "pain", "retribution", "slaughter" ],
-            4: [ "change", "creativity", "freedom", "indepenence", "no limits", "whimsy" ],
-            5: [ "balance", "knowledge", "live and let live", "moderation", "neutrality", "people" ],
-            6: [ "aspiration", "discovery", "glory", "nation", "redemption", "self-knowledge" ],
-            }
-        
-        if randint(1,6) == 6:
+            1: ["beauty", "charity", "the greater good", "life", "respect", "self-sacrifice"],
+            2: ["community", "fairness", "honor", "logic", "responsibility", "tradition"],
+            3: ["dominion", "greed", "might", "pain", "retribution", "slaughter"],
+            4: ["change", "creativity", "freedom", "indepenence", "no limits", "whimsy"],
+            5: ["balance", "knowledge", "live and let live", "moderation", "neutrality", "people"],
+            6: ["aspiration", "discovery", "glory", "nation", "redemption", "self-knowledge"],
+        }
+
+        if randint(1, 6) == 6:
             fst = choice(ideals[alignment])
             scnd = choice(ideals[alignment])
             while fst == scnd:
                 scnd = choice(ideals[alignment])
-            return "holds to the " + alignEnum[alignment] + " ideals of " + fst + " and " + scnd + " in high regard"
+            return (
+                "holds to the "
+                + alignEnum[alignment]
+                + " ideals of "
+                + fst
+                + " and "
+                + scnd
+                + " in high regard"
+            )
         else:
-            return "holds the " + alignEnum[alignment] + " ideal of " + choice(ideals[alignment]) + " in high regard"
-
+            return (
+                "holds the "
+                + alignEnum[alignment]
+                + " ideal of "
+                + choice(ideals[alignment])
+                + " in high regard"
+            )
 
     def bonds(self):
         elements = ["", "", ""]

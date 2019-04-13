@@ -23,7 +23,7 @@ class generator:
         result += npcName + " " + self.mannerisms() + ". \n"
         result += "When interacting with others " + sex + " " + self.interactionTraits() + ". \n"
         result += npcName + " " + self.ideals() + ". \n"
-        result += "Bonds: " + self.bonds() + ". \n"
+        result += sex.capitalize() + " " + self.bonds() + ". \n"
         result += "Flaws and Secrets: " + self.flawsSecrets() + ". \n\n"
 
         return result
@@ -195,8 +195,26 @@ class generator:
             )
 
     def bonds(self):
-        elements = ["", "", ""]
-        return choice(elements)
+        elements = [
+            "considers dedication to fulfilling a personal life goal as important",
+            "believes being protective of family members as especially important",
+            "thinks being protective of colleages or compatriots as very important",
+            "recognizes being loyal to one's benefactor, patron, or employer",
+            "is captivated by a romantic interest",
+            "is drawn to a special place of interest",
+            "is very protective of a sentimental keepsake",
+            "strives to protect a valuable prossession",
+            "is out for revenge",
+        ]
+
+        if randint(1, 10) == 10:
+            fst = choice(elements)
+            scnd = choice(elements)
+            while fst == scnd:
+                scnd = choice(elements)
+            return fst + " and " + scnd
+        else:
+            return choice(elements)
 
     def flawsSecrets(self):
         elements = ["", "", ""]

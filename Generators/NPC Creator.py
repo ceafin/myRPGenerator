@@ -1,8 +1,6 @@
 import os
 import glob
 import imp
-
-
 from random import choice
 from random import randint
 
@@ -25,7 +23,13 @@ class generator:
         result += "When interacting with others " + sex + " " + self.interactionTraits() + ". "
         result += npcName + " " + self.ideals() + ". "
         result += sex.capitalize() + " " + self.bonds() + ". "
-        result += "Something that could potentially undermine" + npcName + " " + self.flawsSecrets() + ".\n\n"
+        result += (
+            "Something that could potentially undermine"
+            + npcName
+            + " "
+            + self.flawsSecrets()
+            + ".\n\n"
+        )
 
         return result
 
@@ -241,7 +245,6 @@ class generator:
         zed = ex.generator()
 
         return zed.start()
-
 
 # x = generator()
 # print x.start()

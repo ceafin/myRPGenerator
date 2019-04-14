@@ -1,6 +1,7 @@
 import os
 import glob
 import imp
+import textwrap
 from random import choice
 from random import randint
 
@@ -24,7 +25,7 @@ class generator:
         result += npcName + " " + self.ideals() + ". "
         result += sex.capitalize() + " " + self.bonds() + ". "
         result += (
-            "Something that could potentially undermine"
+            "Something that could potentially undermine "
             + npcName
             + " "
             + self.flawsSecrets()

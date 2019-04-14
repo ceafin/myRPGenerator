@@ -2,6 +2,7 @@ import os
 import glob
 import imp
 
+
 from random import choice
 from random import randint
 
@@ -16,21 +17,15 @@ class generator:
         npcName = self.npcName()
         sex = "she" if randint(1, 2) == 1 else "he"
 
-        result += npcName + " stands before you. \n"
-        result += sex.capitalize() + " " + self.appearance() + ". \n"
-        result += npcName + " " + self.abilities() + ". \n"
-        result += sex.capitalize() + " " + self.talents() + ". \n"
-        result += npcName + " " + self.mannerisms() + ". \n"
-        result += "When interacting with others " + sex + " " + self.interactionTraits() + ". \n"
-        result += npcName + " " + self.ideals() + ". \n"
-        result += sex.capitalize() + " " + self.bonds() + ". \n"
-        result += (
-            "Something that could potentially undermine"
-            + npcName
-            + " "
-            + self.flawsSecrets()
-            + ". \n\n"
-        )
+        result += npcName + " stands before you. "
+        result += sex.capitalize() + " " + self.appearance() + ". "
+        result += npcName + " " + self.abilities() + ". "
+        result += sex.capitalize() + " " + self.talents() + ". "
+        result += npcName + " " + self.mannerisms() + ". "
+        result += "When interacting with others " + sex + " " + self.interactionTraits() + ". "
+        result += npcName + " " + self.ideals() + ". "
+        result += sex.capitalize() + " " + self.bonds() + ". "
+        result += "Something that could potentially undermine" + npcName + " " + self.flawsSecrets() + ".\n\n"
 
         return result
 
